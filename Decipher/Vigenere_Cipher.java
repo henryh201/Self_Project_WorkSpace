@@ -1,14 +1,15 @@
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
-public class Vigener_cipher {
+public class Vigenere_Cipher {
 
   private Cipher_anaylsis tool;
   private String cryptogram;
   private double plain_txt_coincidence = 0.066;
   private int[][] keyset;
 
-  public Vigener_cipher(String cryptogram){
+  public Vigenere_Cipher(String cryptogram){
     this.cryptogram = cryptogram;
     tool = new Cipher_anaylsis(cryptogram);
   }
@@ -68,13 +69,13 @@ public class Vigener_cipher {
         }
         else  k_frequence[j] = 0;
       }
-      
+
       for(int i = 0; i < num_possible_keys; i++){
         double min = 1;
         for(int j = 0; j < k_frequence.length; j++){
           if(k_frequence[j] < min) {
             possible_keys[i] = j;
-            min = index_coincidence[j];
+            min = k_frequence[j];
           }
         }
         k_frequence[possible_keys[i]]  = 1;
