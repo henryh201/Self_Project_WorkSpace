@@ -6,11 +6,11 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class Cipher_anaylsis {
 
   private String cryptogram;
   private ArrayList<String> sorted_columns;
-
   //default contructor;
   public Cipher_anaylsis(){};
 
@@ -52,7 +52,7 @@ public class Cipher_anaylsis {
       System.exit(0);
     }
     double sum = 0;
-    Sort_into_column(level);
+    this.sorted_columns = Sort_into_column(level);
     for(String column: this.sorted_columns){
       sum += calcuate_index_of_coincidence(column);
     }
@@ -73,12 +73,12 @@ public class Cipher_anaylsis {
   }
 
   // convert cryptogram into specified num of column
-  private void Sort_into_column(int num_columns){
+  public ArrayList<String> Sort_into_column(int num_columns){
     // apprioximiate buff_size for each solumn
-    sorted_columns = new ArrayList<String>();
+    ArrayList<String> sorted_columns = new ArrayList<String>();
     if(num_columns == 1) {
       sorted_columns.add(this.cryptogram);
-      return;
+      return sorted_columns;
     }
     int buff_size =  cryptogram.length()/num_columns + 1;
     char[][] cryptogram_into_columns = new char[num_columns][buff_size];
@@ -91,6 +91,7 @@ public class Cipher_anaylsis {
       String temp = new String(cryptogram_into_columns[i]);
       sorted_columns.add(temp);
     }
+    return sorted_columns;
   }
 
 }
